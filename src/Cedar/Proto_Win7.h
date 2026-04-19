@@ -37,6 +37,7 @@ bool IPsecWin7InitDriverInner();
 UINT GetCurrentIPsecWin7DriverBuild();
 void SetCurrentIPsecWin7DriverBuild();
 bool IPsecWin7InitApi();
+IPSEC_WIN7_FUNCTIONS *IPsecWin7GetApi();
 
 
 #endif	// PROTO_WIN7_H
