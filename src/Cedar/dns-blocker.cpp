@@ -25,6 +25,8 @@ ConvertInterfaceIndexToLuidPtr
 
 GetAdaptersInfoPtr DnsBlockerPrivate::getAdaptersInfo = NULL;
 
+/// WARNING: only pass adapter's description here,
+/// since this assumes `sizeof(IP_ADAPTER_INFO::Description)`.
 static bool IsSoftEtherAdapter(const char *description)
 {
 	if (description == NULL)
@@ -32,13 +34,26 @@ static bool IsSoftEtherAdapter(const char *description)
 		return false;
 	}
 
-	// Note: use `strcmpi` if `_strnicmp` is unavailable.
-	if (_strnicmp(description, VLAN_ADAPTER_NAME, strlen(VLAN_ADAPTER_NAME)) == 0)
-	{
-		return true;
-	}
-
-	if (_strnicmp(description, VLAN_ADAPTER_NAME_OLD, strlen(VLAN_ADAPTER_NAME_OLD)) == 0)
+	// We want to Block any `VLAN_ADAPTER_NAME_OLD`, since this logic is only
+	// included by new-adapter-using programs, hence old-adapter is a leak,
+	// else would do:
+	// ```
+	// description[sizeof(IP_ADAPTER_INFO::Description) - 1] = 0;
+	//
+	// // Note: use `strcmpi` if `_strnicmp` is unavailable.
+	// if (_strnicmp(description, VLAN_ADAPTER_NAME, strlen(VLAN_ADAPTER_NAME)) == 0)
+	// {
+	// 	return true;
+	// }
+	//
+	// if (_strnicmp(description, VLAN_ADAPTER_NAME_OLD, strlen(VLAN_ADAPTER_NAME_OLD)) == 0)
+	// {
+	// 	return true;
+	// }
+	// ```
+	// instead of:
+	description[sizeof(VLAN_ADAPTER_NAME)-1] = 0;
+	if ( strcmpi(a->Description, VLAN_ADAPTER_NAME) == 0 )
 	{
 		return true;
 	}
@@ -263,7 +278,6 @@ unsigned int DnsBlocker::applyFilters(void *engine)
 	{
 		// Allows only our adapters by checking start of adapter-description
 		// the adapter-GUID should be {F3022834-82DA-44D3-8C78-3F6F4D4F52CC}.
-		a->Description[sizeof(a->Description) - 1] = 0;
 		if (IsSoftEtherAdapter(a->Description) == false)
 		{
 			continue; // is NOT one of our own adapters
@@ -353,7 +367,6 @@ int DnsBlocker::forceStaticDns()
 	for (IP_ADAPTER_INFO *a = adapters; a != 0; a = a->Next)
 	{
 		// Excludes our adapters by checking start of adapter-description
-		a->Description[sizeof(a->Description) - 1] = 0;
 		if (IsSoftEtherAdapter(a->Description))
 		{
 			continue; // is one of our own adapters
@@ -384,7 +397,6 @@ int DnsBlocker::useDhcp()
 	for (IP_ADAPTER_INFO *a = adapters; a != 0; a = a->Next)
 	{
 		// Excludes our adapters by checking start of adapter-description
-		a->Description[sizeof(a->Description) - 1] = 0;
 		if (IsSoftEtherAdapter(a->Description))
 		{
 			continue; // is one of our own adapters
