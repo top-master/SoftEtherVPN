@@ -13,15 +13,29 @@
 
 #include "dns-blocker.h"
 
+// Needs to be before anything that may `#include <guiddef.h>`.
+#define INITGUID
+
+#include <winsock2.h>
+
+#define WIN32_NO_STATUS
+#include <windows.h>
+#undef WIN32_NO_STATUS
+
+#include <ntstatus.h>
+#include <winternl.h>
+#include <ntddndis.h>
+#include <Iphlpapi.h>
+#include <netioapi.h>
+
 extern "C" {
 #include "Proto_Win7.h"
 #include "Mayaqua/FileIO.h"
 #include "Mayaqua/Microsoft.h"
 }
 
-#include <Iphlpapi.h>
 #include <objbase.h>
-#include <ntstatus.h>
+#include <guiddef.h>
 
 
 typedef NTSTATUS (WINAPI *ConvertInterfaceIndexToLuidPtr)(
