@@ -4443,6 +4443,7 @@ CMD_ACCOUNT_COLUMN_MONITOR	通過監測模式連接
 CMD_ACCOUNT_COLUMN_NO_TRACKING	不要調整路由表
 CMD_ACCOUNT_COLUMN_QOS_DISABLE	不要使用 QoS 控制功能
 CMD_ACCOUNT_COLUMN_DISABLEUDP		禁用 UDP 加速功能
+CMD_ACCOUNT_COLUMN_PREVENT_DNS_LEAK		防止 DNS 洩漏
 
 
 # Debugging Information Collecting Tool
@@ -6889,7 +6890,7 @@ CMD_AccountServerCertGet_SAVECERT	指定以 X.509 證書格式保存的伺服器
 # AccountDetailSet 命令
 CMD_AccountDetailSet		設置接續設置的進階通訊設定
 CMD_AccountDetailSet_Help	指定註冊到 VPN Client 的連接設置，並定制其連接設置與 VPN Server 通信時使用的 VPN 協定的通訊設定。
-CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no]
+CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no] [/DISABLEUDP:yes|no] [/PREVENT-DNS-LEAK:yes|no]
 CMD_AccountDetailSet_[name]	指定要更改設置的連接設置名。
 CMD_AccountDetailSet_MAXTCP	VPN 通信使用的 TCP 連接數，指定從 1 到 32 的整數。在與 VPN Server 之間的 VPN 通信會話上的資料傳送，通過使用多個 TCP 連接，可以提高通信速度。\n注意: 如果連接伺服器的線路是高速線路時，建議 8 個左右，如果是撥號等低速線路時，建議 1 個。
 CMD_AccountDetailSet_INTERVAL	建立多個 TCP 連接進行 VPN 通信時，以秒為單位指定每個 TCP 連接的建立間隔。規定值為 1 秒。
@@ -6910,6 +6911,7 @@ CMD_AccountDetailSet_Prompt_MONITOR	啟用監控模式 (yes/no):
 CMD_AccountDetailSet_Prompt_NOTRACK	禁用路由表項調節器 (yes/no): 
 CMD_AccountDetailSet_Prompt_NOQOS	禁用 QoS 控制功能 (yes/no): 
 CMD_AccountDetailSet_DISABLEUDP Specify "yes" when disabling UDP acceleration function. Normally "no" is specified.
+CMD_AccountDetailSet_PREVENT-DNS-LEAK 指定 "yes" 將阻擋送往 VPN 外部的 DNS 查詢（僅在 Windows 上生效），指定 "no" 則允許。不帶值的 /PREVENT-DNS-LEAK 等同於 "yes"。若省略，將保留目前的設定。
 CMD_AccountDetailSet_Prompt_DISABLEUDP   Disable UDP Acceleration Function (yes/no):
 
 

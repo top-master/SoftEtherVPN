@@ -4431,6 +4431,7 @@ CMD_ACCOUNT_COLUMN_MONITOR			モニタリングモードで接続
 CMD_ACCOUNT_COLUMN_NO_TRACKING		ルーティングテーブルを調整しない
 CMD_ACCOUNT_COLUMN_QOS_DISABLE	QoS 制御機能を使用しない
 CMD_ACCOUNT_COLUMN_DISABLEUDP		 UDP 高速化機能を無効化する
+CMD_ACCOUNT_COLUMN_PREVENT_DNS_LEAK		DNS リークを防止する
 
 
 # デバッグ情報書き出しコマンド
@@ -6881,7 +6882,7 @@ CMD_AccountServerCertGet_SAVECERT	サーバー固有証明書を X.509 形式で
 # AccountDetailSet コマンド
 CMD_AccountDetailSet	接続設定の高度な通信設定の設定
 CMD_AccountDetailSet_Help	VPN Client に登録されている接続設定を指定し、その接続設定が VPN Server と通信する際に使用される VPN プロトコルの通信設定をカスタマイズします。
-CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no]
+CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no] [/DISABLEUDP:yes|no] [/PREVENT-DNS-LEAK:yes|no]
 CMD_AccountDetailSet_[name]	設定を変更する接続設定の名前を指定します。
 CMD_AccountDetailSet_MAXTCP	VPN 通信に使用する TCP コネクション数を、1 以上 32 以下の整数で指定します。VPN Server との間の VPN 通信セッションにおけるデータ伝送に、複数本の TCP コネクションを束ねて使用することにより、通信速度を向上できる場合があります。\n注意: サーバーへの接続回線が高速な場合は 8 本程度を、ダイヤルアップ等の低速な場合は 1 本をお勧めします。
 CMD_AccountDetailSet_INTERVAL	複数の TCP コネクションを確立して VPN 通信を行うとき、各 TCP コネクションの確立間隔を秒単位で指定します。規定値は 1 秒です。
@@ -6892,6 +6893,7 @@ CMD_AccountDetailSet_MONITOR	VPN Server に「モニタリングモード」で�
 CMD_AccountDetailSet_NOTRACK	ルーティングテーブルの調整処理を行わない場合は "yes" を指定します。通常は "no" を指定します。
 CMD_AccountDetailSet_NOQOS	VoIP / QoS 対応機能を無効にする場合は "yes" を指定します。通常は "no" を指定します。
 CMD_AccountDetailSet_DISABLEUDP	UDP 高速化機能を無効にする場合は "yes" を指定します。通常は "no" を指定します。
+CMD_AccountDetailSet_PREVENT-DNS-LEAK	VPN の外に出ていく DNS クエリをブロックする場合は "yes" (Windows でのみ有効)、許可する場合は "no" を指定します。値なしの /PREVENT-DNS-LEAK は "yes" と同じです。省略した場合は現在の設定が維持されます。
 CMD_AccountDetailSet_Eval_MaxTcp	TCP コネクション数は 1 から 32 の間で指定してください。
 CMD_AccountDetailSet_Eval_Interval	TCP コネクションの確立間隔は 1 秒以上を指定してください。
 CMD_AccountDetailSet_Prompt_MaxTcp	VPN 通信に使用する TCP コネクション数: 

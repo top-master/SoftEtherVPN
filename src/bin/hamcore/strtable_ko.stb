@@ -4409,6 +4409,7 @@ CMD_ACCOUNT_COLUMN_MONITOR 모니터링 모드로 연결
 CMD_ACCOUNT_COLUMN_NO_TRACKING 라우팅 테이블을 조정하지
 CMD_ACCOUNT_COLUMN_QOS_DISABLE QoS 제어 기능을 사용하지
 CMD_ACCOUNT_COLUMN_DISABLEUDP		Disable UDP Acceleration
+CMD_ACCOUNT_COLUMN_PREVENT_DNS_LEAK		Prevent DNS Leak
 
 
 # 디버깅 정보 내보내기 명령
@@ -6856,7 +6857,7 @@ CMD_AccountServerCertGet_SAVECERT 서버 별 인증서를 X.509 형식으로 저
 # AccountDetailSet 명령
 CMD_AccountDetailSet 연결 설정의 고급 통신 설정 설정
 CMD_AccountDetailSet_Help VPN Client에 등록되어있는 연결 설정을 지정하고 연결 설정 VPN Server와 통신하는 데 사용되는 VPN 프로토콜의 통신 설정을 사용자 정의합니다.
-CMD_AccountDetailSet_Args AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no]
+CMD_AccountDetailSet_Args AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no] [/DISABLEUDP:yes|no] [/PREVENT-DNS-LEAK:yes|no]
 CMD_AccountDetailSet_[name] 설정을 변경하려면 연결 설정의 이름을 지정합니다.
 CMD_AccountDetailSet_MAXTCP VPN 통신에 사용하는 TCP 연결 수를 1 이상 32 이하의 정수로 지정합니다. VPN Server 사이의 VPN 통신 세션의 데이터 전송에 복수 개의 TCP 연결을 묶어 사용하여 통신 속도를 향상시킬 수 있습니다. \n주의:서버에 연결 회선이 빠른 경우는 8 개 정도를 전화 접속 등의 느린 경우 1 개를 추천합니다.
 CMD_AccountDetailSet_INTERVAL 여러 TCP 연결을 설정하고 VPN 통신을 할 때 각 TCP 연결 설정 간격을 초 단위로 지정합니다. 기본값은 1 초입니다.
@@ -6877,6 +6878,7 @@ CMD_AccountDetailSet_Prompt_MONITOR 모니터링 모드를 활성화 (yes/no):
 CMD_AccountDetailSet_Prompt_NOTRACK 라우팅 테이블 조정 처리를 비활성화 (yes/no):
 CMD_AccountDetailSet_Prompt_NOQOS QoS 제어 기능을 비활성화 (yes/no):
 CMD_AccountDetailSet_DISABLEUDP Specify "yes" when disabling UDP acceleration function. Normally "no" is specified.
+CMD_AccountDetailSet_PREVENT-DNS-LEAK Specify "yes" to block DNS queries that would go outside the VPN (takes effect on Windows only), or "no" to allow them. A bare /PREVENT-DNS-LEAK means "yes". When omitted, the current setting is kept.
 CMD_AccountDetailSet_Prompt_DISABLEUDP   Disable UDP Acceleration Function (yes/no):
 
 

@@ -4429,6 +4429,7 @@ CMD_ACCOUNT_COLUMN_MONITOR			Connect by Monitoring Mode
 CMD_ACCOUNT_COLUMN_NO_TRACKING		No Adjustment for Routing Table
 CMD_ACCOUNT_COLUMN_QOS_DISABLE		Do not Use QoS Control Function
 CMD_ACCOUNT_COLUMN_DISABLEUDP		Disable UDP Acceleration
+CMD_ACCOUNT_COLUMN_PREVENT_DNS_LEAK		Prevent DNS Leak
 
 
 # Debugging Information Collecting Tool
@@ -6875,7 +6876,7 @@ CMD_AccountServerCertGet_SAVECERT	Specify the certificate file name to save the 
 # AccountDetailSet command
 CMD_AccountDetailSet	Set Advanced Settings for VPN Connection Setting
 CMD_AccountDetailSet_Help	Use this to customize the VPN protocol communication settings used when a VPN Connection Setting registered on a VPN Client is specified and that VPN Connection Setting connects to the VPN Server.
-CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no]
+CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no] [/DISABLEUDP:yes|no] [/PREVENT-DNS-LEAK:yes|no]
 CMD_AccountDetailSet_[name]	Specify the name of the VPN Connection Setting whose setting you want to change.
 CMD_AccountDetailSet_MAXTCP	Specify, using an integer in the range 1 to 32, the number of TCP connections to be used for VPN communication. By using data transmission by multiple TCP connections for VPN communication sessions with VPN Servers it is sometimes possible to increase communication speed. \nNote: We recommend about 8 lines when the connection lines to the server are fast, and 1 line when using a slow connection such as dialup.
 CMD_AccountDetailSet_INTERVAL	When communicating by VPN by establishing multiple TCP connections, specify in seconds, the establishing interval for each TCP connection. The standard value is 1 second.
@@ -6886,6 +6887,7 @@ CMD_AccountDetailSet_MONITOR	Specify "yes" when connecting to the VPN Server usi
 CMD_AccountDetailSet_NOTRACK	Specify "yes" will disable the adjustments of routing table. Normally "no" is specified.
 CMD_AccountDetailSet_NOQOS	Specify "yes" when disabling VoIP / QoS functions. Normally "no" is specified.
 CMD_AccountDetailSet_DISABLEUDP	Specify "yes" when disabling UDP acceleration function. Normally "no" is specified.
+CMD_AccountDetailSet_PREVENT-DNS-LEAK	Specify "yes" to block DNS queries that would go outside the VPN (takes effect on Windows only), or "no" to allow them. A bare /PREVENT-DNS-LEAK means "yes". When omitted, the current setting is kept.
 CMD_AccountDetailSet_Eval_MaxTcp	Specify an integer in the range 1 to 32 for the number of TCP connections.
 CMD_AccountDetailSet_Eval_Interval	Set at least 1 second for the interval to establish a TCP connection.
 CMD_AccountDetailSet_Prompt_MaxTcp	Number of TCP Connections to Use in VPN Communication: 

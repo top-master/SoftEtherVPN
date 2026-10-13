@@ -4429,6 +4429,7 @@ CMD_ACCOUNT_COLUMN_MONITOR			İzleme Moduna Göre Bağlanın
 CMD_ACCOUNT_COLUMN_NO_TRACKING		Yönlendirme Tablosu için Ayarlama Yok
 CMD_ACCOUNT_COLUMN_QOS_DISABLE		QoS Kontrol İşlevini Kullanmayın
 CMD_ACCOUNT_COLUMN_DISABLEUDP		UDP Hızlandırmayı Devre Dışı Bırak
+CMD_ACCOUNT_COLUMN_PREVENT_DNS_LEAK		DNS Sızıntısını Önle
 
 
 # Debugging Information Collecting Tool
@@ -6875,7 +6876,7 @@ CMD_AccountServerCertGet_SAVECERT	Sunucu bireysel sertifikasını X.509 biçimin
 # AccountDetailSet command
 CMD_AccountDetailSet	VPN Bağlantı Ayarı için Gelişmiş Ayarları Ayarlama
 CMD_AccountDetailSet_Help	Bir VPN İstemcisi üzerinde kayıtlı bir VPN Bağlantı Ayarı belirtildiğinde ve bu VPN Bağlantı Ayarı VPN Sunucusuna bağlandığında kullanılan VPN protokolü iletişim ayarlarını özelleştirmek için bunu kullanın.
-CMD_AccountDetailSet_Args	AccountDetailSet [ad] [/MAXTCP:maks_bağlantı] [/INTERVAL:ek_aralık] [/TTL:kopma_süresi] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no]
+CMD_AccountDetailSet_Args	AccountDetailSet [ad] [/MAXTCP:maks_bağlantı] [/INTERVAL:ek_aralık] [/TTL:kopma_süresi] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no] [/DISABLEUDP:yes|no] [/PREVENT-DNS-LEAK:yes|no]
 CMD_AccountDetailSet_[name]	Ayarını değiştirmek istediğiniz VPN Bağlantı Ayarı'nın adını belirtin.
 CMD_AccountDetailSet_MAXTCP	VPN iletişimi için kullanılacak TCP bağlantılarının sayısını 1 ila 32 aralığında bir tamsayı kullanarak belirtin. VPN Sunucuları ile VPN iletişim oturumları için birden fazla TCP bağlantısı ile veri iletimi kullanarak bazen iletişim hızını artırmak mümkündür. \nNot: Sunucuya bağlantı hatları hızlı olduğunda yaklaşık 8 satır ve çevirmeli bağlantı gibi yavaş bir bağlantı kullanıldığında 1 satır öneririz.
 CMD_AccountDetailSet_INTERVAL	Birden fazla TCP bağlantısı kurarak VPN ile iletişim kurarken, her TCP bağlantısı için kurma aralığını saniye cinsinden belirtin. Standart değer 1 saniyedir.
@@ -6886,6 +6887,7 @@ CMD_AccountDetailSet_MONITOR	İzleme Modunu kullanarak VPN Sunucusuna bağlanır
 CMD_AccountDetailSet_NOTRACK	"Evet" olarak belirtmek yönlendirme tablosu ayarlamalarını devre dışı bırakacaktır. Normalde "hayır" belirtilir.
 CMD_AccountDetailSet_NOQOS	VoIP / QoS işlevlerini devre dışı bırakırken "evet" olarak belirtin. Normalde "hayır" belirtilir.
 CMD_AccountDetailSet_DISABLEUDP	UDP hızlandırma işlevini devre dışı bırakırken "yes" belirtin. Normalde "hayır" belirtilir.
+CMD_AccountDetailSet_PREVENT-DNS-LEAK	VPN dışına çıkacak DNS sorgularını engellemek için "yes" (yalnızca Windows'ta etkilidir), izin vermek için "no" belirtin. Değer verilmeden kullanılan /PREVENT-DNS-LEAK, "yes" anlamına gelir. Belirtilmezse mevcut ayar korunur.
 CMD_AccountDetailSet_Eval_MaxTcp	TCP bağlantılarının sayısı için 1 ila 32 aralığında bir tamsayı belirtin.
 CMD_AccountDetailSet_Eval_Interval	TCP bağlantısı kurma aralığı için en az 1 saniye ayarlayın.
 CMD_AccountDetailSet_Prompt_MaxTcp	VPN İletişiminde Kullanılacak TCP Bağlantılarının Sayısı:

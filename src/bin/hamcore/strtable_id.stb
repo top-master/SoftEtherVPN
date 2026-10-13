@@ -4429,6 +4429,7 @@ CMD_ACCOUNT_COLUMN_MONITOR			Koneksi dengan Mode Pemantauan
 CMD_ACCOUNT_COLUMN_NO_TRACKING		Tidak Ada Penyesuaian untuk Tabel Routing
 CMD_ACCOUNT_COLUMN_QOS_DISABLE		Tidak Menggunakan Fungsi Pengendalian QoS
 CMD_ACCOUNT_COLUMN_DISABLEUDP		Nonaktifkan Percepatan UDP
+CMD_ACCOUNT_COLUMN_PREVENT_DNS_LEAK		Cegah Kebocoran DNS
 
 
 # Debugging Information Collecting Tool
@@ -6875,7 +6876,7 @@ CMD_AccountServerCertGet_SAVECERT	Tentukan nama file sertifikat untuk menyimpan 
 # AccountDetailSet command
 CMD_AccountDetailSet	Tetapkan Pengaturan Lanjutan untuk Pengaturan Koneksi VPN
 CMD_AccountDetailSet_Help	Gunakan ini untuk menyesuaikan pengaturan komunikasi protokol VPN yang digunakan ketika Pengaturan Koneksi VPN yang terdaftar di VPN Client ditentukan dan Pengaturan Koneksi VPN tersebut terhubung ke VPN Server.
-CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no]
+CMD_AccountDetailSet_Args	AccountDetailSet [name] [/MAXTCP:max_connection] [/INTERVAL:additional_interval] [/TTL:disconnect_span] [/HALF:yes|no] [/BRIDGE:yes|no] [/MONITOR:yes|no] [/NOTRACK:yes|no] [/NOQOS:yes|no] [/DISABLEUDP:yes|no] [/PREVENT-DNS-LEAK:yes|no]
 CMD_AccountDetailSet_[name]	Tentukan nama Pengaturan Koneksi VPN yang pengaturannya ingin Anda ubah.
 CMD_AccountDetailSet_MAXTCP	Tentukan, menggunakan angka dalam rentang 1 hingga 32, jumlah koneksi TCP yang akan digunakan untuk komunikasi VPN. Dengan menggunakan transmisi data melalui beberapa koneksi TCP untuk sesi komunikasi VPN dengan VPN Server, kadang-kadang dapat meningkatkan kecepatan komunikasi. \nCatatan: Kami merekomendasikan sekitar 8 jalur ketika koneksi ke server cepat, dan 1 jalur ketika menggunakan koneksi yang lambat seperti dial-up.
 CMD_AccountDetailSet_INTERVAL	Ketika berkomunikasi melalui VPN dengan membangun beberapa koneksi TCP, tentukan dalam detik, interval pembentukan untuk setiap koneksi TCP. Nilai standar adalah 1 detik.
@@ -6886,6 +6887,7 @@ CMD_AccountDetailSet_MONITOR	Tentukan "yes" ketika terhubung ke VPN Server mengg
 CMD_AccountDetailSet_NOTRACK	Tentukan "yes" untuk menonaktifkan penyesuaian tabel routing. Biasanya "no" yang ditentukan.
 CMD_AccountDetailSet_NOQOS	Tentukan "yes" ketika menonaktifkan fungsi VoIP / QoS. Biasanya "no" yang ditentukan.
 CMD_AccountDetailSet_DISABLEUDP	Tentukan "yes" ketika menonaktifkan fungsi akselerasi UDP. Biasanya "no" yang ditentukan.
+CMD_AccountDetailSet_PREVENT-DNS-LEAK	Tentukan "yes" untuk memblokir kueri DNS yang dikirim di luar VPN (hanya berlaku di Windows), atau "no" untuk mengizinkannya. /PREVENT-DNS-LEAK tanpa nilai berarti "yes". Jika dihilangkan, pengaturan saat ini tetap dipakai.
 CMD_AccountDetailSet_Eval_MaxTcp	Tentukan angka dalam rentang 1 hingga 32 untuk jumlah koneksi TCP.
 CMD_AccountDetailSet_Eval_Interval	Tetapkan setidaknya 1 detik untuk interval membentuk koneksi TCP.
 CMD_AccountDetailSet_Prompt_MaxTcp	Jumlah Koneksi TCP yang Akan Digunakan dalam Komunikasi VPN: 
